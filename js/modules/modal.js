@@ -1,5 +1,3 @@
-import initAnimacaoScroll from "./scroll-animacao";
-
 export default class Modal {
   constructor(botaoAbrir, botaoFechar, containerModal) {
     this.botaoAbrir = document.querySelector(botaoAbrir);
@@ -21,13 +19,13 @@ export default class Modal {
   // adiciona o evento de toggle ao modal
   eventToggleModal(event) {
     event.preventDefault();
-    this.toggleModal(event);
+    this.toggleModal();
   }
 
   // fecha modal ao clicar do lado de fora
   cliqueForaModal(event) {
     if(event.target === this.containerModal) {
-    this.toggleModal(event);
+    this.toggleModal();
     }
   }
 
