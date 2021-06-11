@@ -1,0 +1,26 @@
+import initAnimaNumeros from "./anima-numeros";
+
+export default function initFetchAnimais() {
+  
+  async function fectchAnimais(url) {
+    const animaisResponse = await fetch(url);
+    const animaisJSON = await animaisResponse.json();
+    const numerosGrid = document.querySelector('.numeros-grid');
+    animaisJSON.forEach(animal => {
+      const divAnimal = createAnimal(animal);
+      numerosGrid.appendChild(divAnimal);
+    });
+    initAnimaNumeros();
+
+  }
+  
+  function createAnimal(animal) {
+    const div = document.createElement('div');
+    div.classList.add('numero-animal');
+    div.innerHTML = `<h3>${animal.especie}</h3><span>${animal.total}</span>`;
+    return div;
+  }
+  
+  fectchAnimais('./animaisapi.json');
+}
+
